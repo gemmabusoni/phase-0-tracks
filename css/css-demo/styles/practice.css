@@ -20,3 +20,11 @@ section#contact-info {
 .accomplishments {
 	font-size: .8em;
 }
+
+body:hover {
+	background-color: green;
+}
+
+ul > li {
+	color: blue;
+}
