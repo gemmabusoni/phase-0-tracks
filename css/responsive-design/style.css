@@ -32,7 +32,7 @@ figcaption {
 }
 
 body { 
-  width: 960px; 
+  max-width: 960px; 
 }
 
 section {
@@ -53,3 +53,18 @@ main {
   display: inline-block;
   vertical-align: top;
 }
+
+/* @media screen and (max-width: 500px) {
+  body {
+    background-color: hotpink;
+  }
+} */
+
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 10px;
+  }
+  img {
+    height: 200px;
+    width: 200px;
+  }
