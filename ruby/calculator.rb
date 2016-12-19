@@ -1,58 +1,55 @@
-=begin
-def calculate(num1, oper, num2)
-oper = ['+', '-', '*', '/']
-if oper == oper[0]
-num1.send(oper[0],num2)
+# method code
+
+
+def calculate(user_inp) #This operation only does numbers from 0-9
+	i = 0
+	calc_hist = []
+# Create a method that keeps cycle equations until user inputs 'done'
+  while user_inp != 'done'
+# Takes input quation, strip out the spaces, and split into an array
+    user_calc = user_inp.gsub(/\s+/, "").split('')
+# Give each array index a variable
+    num1 = user_calc[0].to_i
+    operator = user_calc[1]
+    num2 = user_calc[2].to_i
+# Create conditional statement depending on operation
+      if operator == "+"
+        p sol = num1 + num2
+      elsif operator == "-"
+        p sol = num1 - num2
+      elsif operator == "*"
+        p sol = num1 * num2
+      elsif operator == "/"
+        p sol = num1 / num2
+# Have a condition for invalid entries
+      else
+        puts "Invalid Entry: #{user_calc[0]} #{user_calc[1]} #{user_calc[2]} [Please recheck equation]"
+        sol = "invalid"
+      end
+# Have it push all valid entries into an array
+      if sol != "invalid"
+        calc_hist.insert(i, "#{num1} #{operator} #{num2} = #{sol}")
+        i += 1
+      end
+
+	  puts "What is your calculation?"
+	  user_inp = gets.chomp
+  end
+# an iteration that will sstate how many calculations were solved
+  puts "#{i} calculations performed"
+  calc_hist.each do |equation|
+  	p equation
+  end
+
 end
-#oper.map {|o| num1.public_send o,num2}
 
 
-end
+# driver code - I decided to use a single input that the user would input and be placed into the method
 
-p calculate(6, '+', 9)
+puts "What is your calculation?"
+user_inp = gets.chomp
+calculate(user_inp)
 
+# calculate(4,'+',5)
 
-
-puts ("what operation would you like to perform? +, -, *, or /?")
-
-=end
-calculations = []
-loop do
-
-	def calc(num1, op, num2)
-	  num1 = num1.to_i
-	  num2 = num2.to_i
-	  num1.send(op,num2)
-	end
-
-	#p calc(4, '+', 5)
-	#p calc(4, '-', 5)
-	#p calc(4, '*', 5)
-	#p calc(4, '/', 5)
-
-	puts ("what operation would you like to perform? Enter number then +, -, *, or /, then another num..")
-	answer = gets.chomp
-	if answer.empty?
-		puts("you didn't write anything!")
-	else
-	break if answer == "done"
-	answer = answer.split("")
-	p answer
-	p calc(answer[0],answer[2],answer[4])
-
-
-
-	calculations << "#{answer.join('')} = #{calc(answer[0],answer[2],answer[4])}"
-	p "#{calculations.length.to_s} calculations performed"
-
-
-	#calculations = calculations.merge({answer.join('') => calc(answer[0],answer[2],answer[4])})
-	#calculations[answer.join('')] = calc(answer[0],answer[2],answer[4])
-	p calculations
-
-	#calculations.each do |add, ans|
-	#p "#{add} = #{ans}"
-	#end
-	p calculations
-	end
-end
+# Mistakes that could happen: Accidentally pressing a letter, multiple operators right after another, and multiple decimal places.
